@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Library System{% endblock %}</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 sidebar shadow-lg md:translate-x-0">
+      <div class="p-6">
+        <h1 class="text-xl font-bold text-gray-800">AM Public Library</h1>
+        <p class="text-xs text-gray-500">Library Management System</p>
+      </div>
+      <nav class="mt-6">
+        <a href="{% url 'dashboard' %}" class="sidebar-link flex items-center py-3 px-6 {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+          <i class="fas fa-tachometer-alt mr-3"></i> Dashboard
+        </a>
+        <a href="{% url 'catalog' %}" class="sidebar-link flex items-center py-3 px-6 {% if request.resolver_match.url_name == 'catalog' %}active{% endif %}">
+          <i class="fas fa-book-open mr-3"></i> Catalog
+        </a>
+        <a href="{% url 'members' %}" class="sidebar-link flex items-center py-3 px-6 {% if request.resolver_match.url_name == 'members' %}active{% endif %}">
+          <i class="fas fa-users mr-3"></i> Members
+        </a>
+        <a href="{% url 'circulation' %}" class="sidebar-link flex items-center py-3 px-6 {% if request.resolver_match.url_name == 'circulation' %}active{% endif %}">
+          <i class="fas fa-exchange-alt mr-3"></i> Circulation
+        </a>
+        <a href="{% url 'reports' %}" class="sidebar-link flex items-center py-3 px-6 {% if request.resolver_match.url_name == 'reports' %}active{% endif %}">
+          <i class="fas fa-chart-line mr-3"></i> Reports
+        </a>
+        <a href="{% url 'settings' %}" class="sidebar-link flex items-center py-3 px-6 {% if request.resolver_match.url_name == 'settings' %}active{% endif %}">
+          <i class="fas fa-cog mr-3"></i> Settings
+        </a>
+      </nav>
+      <div class="absolute bottom-0 w-full p-6">
+        <a href="{% url 'logout' %}" class="block w-full text-center bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">Logout</a>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Header -->
+      <header class="main-header shadow-md">
+        <div class="flex items-center justify-between px-6 py-3">
+          <div class="flex items-center">
+            <button id="menu-button" class="text-white focus:outline-none md:hidden mr-4">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <h2 class="text-2xl font-semibold text-white">{% block header %}{% endblock %}</h2>
+          </div>
+          <div class="flex items-center">
+            <div class="relative">
+              <input type="text" placeholder="Search..." class="bg-white rounded-full py-2 px-4 w-48 text-sm focus:outline-none focus:ring-2 focus:ring-green-300">
+              <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+            <div class="ml-4 flex items-center">
+              <img class="h-8 w-8 rounded-full object-cover" src="https://placehold.co/40x40/EFEFEF/333333?text=A" alt="Admin avatar">
+              <span class="ml-2 text-white font-medium hidden sm:block">Admin</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page content -->
+      <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.getElementById('menu-button');
+      const sidebar = document.getElementById('sidebar');
+      if (menuButton) {
+        menuButton.addEventListener('click', () => {
+          sidebar.classList.toggle('open');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

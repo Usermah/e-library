@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold mb-4">Members</h2>
+    <table class="w-full text-left border">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="py-2 px-4">Name</th>
+                <th class="py-2 px-4">Email</th>
+                <th class="py-2 px-4">Phone</th>
+                <th class="py-2 px-4">Joined</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr class="border-b hover:bg-gray-50">
+                <td class="py-2 px-4">{{ member.name }}</td>
+                <td class="py-2 px-4">{{ member.email }}</td>
+                <td class="py-2 px-4">{{ member.phone }}</td>
+                <td class="py-2 px-4">{{ member.joined_on }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4" class="text-center py-4">No members registered.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

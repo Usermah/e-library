@@ -1,0 +1,117 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8;
+}
+
+.main-header {
+    background-color: #006400; /* Koha green */
+}
+
+.sidebar {
+    background-color: #ffffff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-link {
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar-link:hover {
+    background-color: #e6f4e6;
+    color: #006400;
+    border-left: 3px solid #006400;
+}
+
+.sidebar-link.active {
+    background-color: #d1ead1;
+    color: #006400;
+    font-weight: 600;
+    border-left: 3px solid #006400;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.search-bar-container {
+    background: url('https://placehold.co/1200x200/006400/FFFFFF?text=Welcome+to+the+Library') no-repeat center center;
+    background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1000;
+        position: fixed;
+        height: 100vh;
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* ✅ Pure CSS for login page */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f3f4f6; /* gray-100 */
+}
+
+.login-box {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #006400;
+    margin-bottom: 1.5rem;
+}
+
+.login-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.5rem;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #006400;
+    box-shadow: 0 0 0 2px rgba(0,100,0,0.3);
+}
+
+.login-button {
+    width: 100%;
+    background-color: #006400;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover {
+    background-color: #004d00;
+}

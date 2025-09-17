@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold mb-4">Catalog</h2>
+    <table class="w-full text-left border">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="py-2 px-4">Title</th>
+                <th class="py-2 px-4">Author</th>
+                <th class="py-2 px-4">ISBN</th>
+                <th class="py-2 px-4">Published</th>
+                <th class="py-2 px-4">Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr class="border-b hover:bg-gray-50">
+                <td class="py-2 px-4">{{ book.title }}</td>
+                <td class="py-2 px-4">{{ book.author }}</td>
+                <td class="py-2 px-4">{{ book.isbn }}</td>
+                <td class="py-2 px-4">{{ book.published_date }}</td>
+                <td class="py-2 px-4">{{ book.added_on|date:"Y-m-d" }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5" class="text-center py-4">No books found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
