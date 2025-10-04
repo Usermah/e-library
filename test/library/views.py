@@ -71,7 +71,7 @@ def logout_view(request):
     return redirect("login")
 
 
-# ✅ Add new book
+# Add new book
 @login_required
 def add_book(request):
     if request.method == "POST":
@@ -84,7 +84,7 @@ def add_book(request):
     return render(request, "add_book.html", {"form": form})
 
 
-# ✅ Add new member
+#  Add new member
 @login_required
 def add_member(request):
     if request.method == "POST":
